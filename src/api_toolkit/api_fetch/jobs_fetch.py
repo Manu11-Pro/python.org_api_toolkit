@@ -10,7 +10,7 @@ if status_code == 200:
 
 def get_py_jobs():
     pyorg_url = "https://www.python.org/"
-    jobs_url = "https://www.python.org/jobs/"
+    jobs_url = "https://www.python.org/jobs/?page=1" and "https://www.python.org/jobs/?page=2"
     response = requests.get(jobs_url)
     soup = BeautifulSoup(response.text, "html.parser")
 
