@@ -13,6 +13,8 @@ def get_py_jobs():
 
     jobs_pages = ["https://www.python.org/jobs/?page=1", "https://www.python.org/jobs/?page=2"]
 
+    all_jobs = []
+
     for url in jobs_pages:
         response = requests.get(url)
         soup = BeautifulSoup(response.text, "html.parser")
@@ -24,8 +26,6 @@ def get_py_jobs():
 
         jobs_items = jobs_section.find_all("li")
 
-        jobs = []
-
         for item in jobs_items:
             job_company_span = item.find("span", class_= "listing-company-name")
             job_company_span_all_text = list(job_company_span.stripped_strings)
@@ -34,7 +34,9 @@ def get_py_jobs():
 
             job_type_span = item.find("span", class_= "listing-job-type")
 
-            job_listing_date_span = item.find("span", class_= "listing-posted")
+            job_listing_publish_date_span = item.find("span", class_= "listing-posted")
+
+            job_category_span = item.find("span", class_= "listing-company-category")
 
             job_title = item.find("a").text
             job_company = job_company_span_all_text[-1]
@@ -42,42 +44,34 @@ def get_py_jobs():
             job_full_link = f"{pyorg_url + job_partial_link}"
             job_location = job_location_span.text.strip()
             job_type_span_all_text = job_type_span.text.strip()
-            job_listing_date_span_all_text = job_listing_date_span.text.strip()
+            job_listing_publish_date_span_all_text = job_listing_publish_date_span.text.strip()
+            job_category_span_all_text = job_category_span.text.strip()
 
+            all_jobs.append({
+                "Job Title": job_title,
+                "Job Company": job_company,
+                "Job Link": job_full_link,
+                "Job Location": job_location,
+                "Job Type": job_type_span_all_text,
+                "Job Listing Publish Date": job_listing_publish_date_span_all_text,
+                "Job Category": job_category_span_all_text
+            })
 
-            print("\n")
-            print(job_title)
-            print(job_company)
-            print(job_full_link)
-            print(job_location)
-            print(job_type_span_all_text)
-            print(job_listing_date_span_all_text)
-            print("\n")
-        
-print(get_py_jobs())
+    return all_jobs
 
-#         if _ and _:
-#             job_title = item.find("a").text
-#             job_company = item.find("text").text
-#             link = item.find("a")["href"]
+all_jobs_data = get_py_jobs()
 
-#             blogs.append({
-#                 "Job Title": job_title,
-#                 "Comapany": job_company,
-#                 "Link": link,
-#             })
+print(f"Python Jobs: ")
+print("\n # Python Jobs # \n")
 
-#     return blogs[:5]
+for jobs in all_jobs_data:
+    print(f"JOB TITLE : {jobs["Job Title"]}")
+    print(f"COMPANY : {jobs["Job Company"]}")
+    print(f"JOB LINK : {jobs["Job Link"]}")
+    print(f"JOB LOCATION : {jobs["Job Location"]}")
+    print(f"JOB TYPE : {jobs["Job Type"]}")
+    print(f"JOB LISTING PUBLISH DATE : {jobs["Job Listing Publish Date"]}")
+    print(f"JOB CATEGORY : {jobs["Job Category"]}")
+    print("\n")
 
-# news_and_blog_data = get_py_jobs()
-
-# for blogs in news_and_blog_data:
-#     print(f"Latest Blogs and News: ")
-#     print("\n")
-#     print("\n # Python News and Blogs # \n")
-#     print(f"TITLE : {blogs["News"]}")
-#     print(f"DATE : {blogs["Date"]}")
-#     print(f"LINK : {blogs["Link"]}")
-#     print("\n")
-
-# print("\n --- End of News and Blogs Feed --- \n")
+print("\n --- End of Python Jobs Feed --- \n")
