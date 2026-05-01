@@ -2,7 +2,11 @@ import requests
 from bs4 import BeautifulSoup
 
 response = requests.get("https://www.python.org/")
-print(f"Status: {response.status_code}")
+status_code = response.status_code
+
+if status_code == 200:
+    print("\n Status Good for Fetching! \n")
+    print(f"\n {"-" * 30} \n")
 
 def get_py_news():
     url = "https://www.python.org/"

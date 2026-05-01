@@ -2,7 +2,11 @@ import requests
 from bs4 import BeautifulSoup
 
 response = requests.get("https://www.python.org/")
-print(f"Status: {response.status_code}")
+status_code = response.status_code
+
+if status_code == 200:
+    print("\n Status Good for Fetching! \n")
+    print(f"\n {"-" * 30} \n")
 
 def get_py_latest_version():
     url = "https://www.python.org/"
@@ -17,3 +21,4 @@ def get_py_latest_version():
     return "Version Not Found!"
 
 print(f"Latest release: {get_py_latest_version()}")
+print(f"\n {"-" * 30} \n")
