@@ -42,13 +42,12 @@ def get_py_news():
 
 news_and_blog_data = get_py_news()
 
+print(f"Latest Blogs and News: ")
+print("\n # Python News and Blogs # \n")
+
 for blogs in news_and_blog_data:
-    print(f"Latest Blogs and News: ")
-    print("\n")
-    print("\n # Python News and Blogs # \n")
     print(f"TITLE : {blogs["News"]}")
     print(f"DATE : {blogs["Date"]}")
     print(f"LINK : {blogs["Link"]}")
-    print("\n")
 
 print("\n --- End of News and Blogs Feed --- \n")
