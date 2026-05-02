@@ -5,6 +5,14 @@ from src.api_toolkit.api_fetch.jobs_fetch import get_py_jobs
 
 app = FastAPI(title="Python.org API Toolkit")
 
+@app.get("/")
+def home():
+    return {
+        "Message": "Welcome to the Python.org API Toolkit",
+        "Endpoints": ["/py_latest_version", "/py_news_and_blogs", "/py_jobs"],
+        "Docs": "/docs"
+    }
+
 @app.get("/py_latest_version")
 def read_py_latest_version():
     return get_py_latest_version()
