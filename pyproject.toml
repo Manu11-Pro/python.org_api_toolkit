@@ -1,0 +1,31 @@
+[project]
+name = "python_org_api_toolkit"
+version = "0.1.0"
+description = "A FastAPI toolkit for fetching latest Python versions, news, and jobs from Python.org.This is an api project which is not affilated with PSF."
+readme = "README.md"
+authors = [
+    { name = "Manu11-Pro" }
+]
+requires-python = ">=3.14"
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "requests",
+    "beautifulsoup4",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Manu11-Pro/python.org_api_toolkit"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
