@@ -10,8 +10,7 @@ app = FastAPI(title="Python.org API Toolkit")
 def home():
     return {
         "Message": "Welcome to the Python.org API Toolkit",
-        "Endpoints": ["/py_latest_version", "/py_news_and_blogs", "/py_jobs"],
-        "": ["/feedback"],
+        "Endpoints": ["/py_latest_version", "/py_news_and_blogs", "/py_jobs", "/feedback"],
         "Docs": "/docs"
     }
 

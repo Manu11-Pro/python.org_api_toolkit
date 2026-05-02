@@ -15,13 +15,14 @@
 - Py Latest Version : `https://manu11pro-python-org-api-toolkit.hf.space/py_latest_version`
 - Py News and Blogs : `https://manu11pro-python-org-api-toolkit.hf.space/py_news_and_blogs`
 - Py Jobs : `https://manu11pro-python-org-api-toolkit.hf.space/py_jobs`
+- Py Feedback : `https://manu11pro-python-org-api-toolkit.hf.space/feedback`
 
 ## Install and Use
 
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/Manu11-Pro/python.org_api_toolkit.git
+   git clone https://github.com/Manu11-Pro/python_org_api_toolkit.git
    ```
 
 2. **Install dependencies**:
@@ -44,17 +45,26 @@
 ### 🛠️ Latest Version
 
 - **Endpoint**: `/py_latest_version`
+- Method: GET
 - Returns the current stable release.
 
 ### 📰 News and Blogs
 
 - **Endpoint**: `/py_news_and_blogs`
+- Method: GET
 - Returns most recent posts from the official Python blog.
 
 ### 💼 Jobs
 
 - **Endpoint**: `/py_jobs`
+- Method: GET
 - Returns a list of active job listings from the Python.org job board.
+
+### 💬 Feedback
+
+- **Endpoint**: `/feedback`
+- Method: POST
+- Allows users to send a username and a message to the API.
 
 ## Requirements
 
